@@ -1,7 +1,10 @@
+'use strict';
+const fs = require('fs');
+
 function promiseAssic(){
  return new Promise(
    function(resolve, reject) {
-   fs.readFile(__dirname+'/search-replace.js', (err, data) => {
+   fs.readFile(__dirname+'/promise-example.js', (err, data) => {
      if(err) { reject( err); }
 
      resolve(data.toString());
