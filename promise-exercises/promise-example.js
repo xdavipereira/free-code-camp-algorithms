@@ -12,10 +12,29 @@ function promiseAssic(){
  })
 }
 
+function newAssync() {
+  return new Promise(
+    function (resolve, reject){
+      fs.readFile(__dirname+'/search-replace.js', (err, data) => {
+        if(err) { reject( err); }
 
-promiseAssic().then(function(a){
+        resolve(data.toString());
+      })
+    })
+}
+
+
+promiseAssic()
+.then(function(a){
  console.log(a)
-}).then(
+})
+.then(function(){
+  return newAssync();
+})
+.then(function(b){
+  console.log(b);
+})
+.then(
 function executarDepois() {
      return console.log('executou');
 })
